@@ -13,6 +13,7 @@ app.post("/register", RegisterUser, async (req, res) => {
         res.status(200).send({ success: true, user: user, msg: "successfully registered" })
     } catch (e) { res.status(400).send({ success: false, error: e }) }
 })
+
 app.post("/key", async (req, res) => {
     try {
         const token = req.body.token
@@ -48,7 +49,7 @@ app.post("/login", LoginUser, async (req, res) => {
     try {
         const user = req.user
         const token = req.token
-        console.log(token, "token".red)
+        // console.log(user,"<<")
         res.status(200).send({ success: true, user: user, token: token })
     } catch (e) { res.status(400).send({ success: false, error: e }) }
 })
