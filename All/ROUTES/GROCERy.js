@@ -11,9 +11,9 @@ app.post("/upload", uploadGrocery, (req, res) => {
         res.status(200).send({ success: true, uploaded_Product: uploadGrocery })
     } catch (e) { console.log(e, "error while uploading food item") }
 })
+
 app.delete("/delete/", deleteFoodItem, async (req, res) => {
     try {
-
         res.status(200).send({ success: true, msg: "food item successfully deleted" })
     } catch (e) { console.log(e, "error while uploading food item") }
 })
