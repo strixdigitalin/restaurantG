@@ -1,17 +1,12 @@
 const RESTAURANT = require("../SCHEMA/Restaurant");
-const FOODITEM = require("../SCHEMA/FoodItem")
+const GROCERY = require("../SCHEMA/GROCERY")
 const color = require("colors")
-const uploadFoodItem = async (req, res, next) => {
+const uploadGrocery = async (req, res, next) => {
     try {
-        const restaurantId = req.body.restaurantId
-        const ItemData = req.body.ItemData
-        const SchemaItemData = await new FOODITEM(ItemData)
-        const saveItemData = await SchemaItemData.save()
-        // console.log(saveItemData, "this is item data".green)
-        console.log(`${saveItemData._id}`.cyan)
-        const restAfterUpdating = await RESTAURANT.findByIdAndUpdate(restaurantId, { $push: { foodItem: saveItemData._id } }, { new: true })
-        console.log(restAfterUpdating)
-        req.restAfterUploadingItem = await restAfterUpdating
+
+        const Grocery = await new GROCERY(req.body)
+        const saveIt = await Grocery.save()
+        req.Grocery = saveIt
         next()
     } catch (e) {
         console.log(e, "error while uploading food item")
@@ -19,4 +14,4 @@ const uploadFoodItem = async (req, res, next) => {
 
     }
 }
-module.exports = uploadFoodItem
+module.exports = uploadGrocery

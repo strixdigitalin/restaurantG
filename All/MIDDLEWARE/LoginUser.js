@@ -15,6 +15,8 @@ const LoginUser = async (req, res, next) => {
         const email = req.body.email
         const password = req.body.password
         const user = await USER.findOne({ email: email })
+        console.log(email, password, "<<<<<")
+        console.log(user, "<<<<<")
         if (user) {
             const match = await BCRYPT.compare(password, user.password)
             if (match) {

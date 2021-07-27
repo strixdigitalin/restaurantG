@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const express = require('express');
 const RESTAURANT = require("../SCHEMA/Restaurant")
-const createRest = require('../MIDDLEWARE/createRest');
+const createRest = require('../MIDDLEWARE/CreateRest');
 require("colors")
 const app = express.Router()
 
